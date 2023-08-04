@@ -1,15 +1,16 @@
 #include <iostream>
 
-struct Str
+struct alignas(4) Str
 {
     char a;
-    char c;
+
     short b;
+    char c;
 
     int d;
 };
 
 int main(){
-    std::cout << sizeof(Str) << std::endl;
+    std::cout << alignof(Str) << " " << sizeof(Str) << std::endl;
     return 0;
 }
