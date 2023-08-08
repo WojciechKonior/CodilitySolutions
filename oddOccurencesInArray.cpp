@@ -1,25 +1,16 @@
 #include <vector>
 #include <iostream>
-#include <algorithm>
 
 using namespace std;
 
-int solution(std::vector<int> &A) {
-    sort(A.begin(), A.end());
+int solution(vector<int> &A) {
+    unsigned int size = A.size();
+    unsigned long long int sum = 0;
     
-    while(!A.empty())
-    {
-        if(A.size()==1) 
-            return A.front();
-        else if(*(A.begin())==*(A.begin()+1))
-        {
-            A.erase(A.begin()+1);
-            A.erase(A.begin());
-        }
-        else {
-            return *(A.begin());
-        }
+    for (unsigned int i=0; i<size; i++) {
+        // A xor B xor A = B
+        sum ^= A[i];
     }
-
-    return 0;
+    
+    return sum;
 }
