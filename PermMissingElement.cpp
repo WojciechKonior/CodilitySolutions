@@ -4,7 +4,7 @@
 using namespace std;
 
 int solution(vector<int> &A) {
-    // Implement your solution here
+
     vector<int> B(A.size()+1, -1);
     for(unsigned i = 0; i<A.size(); i++)
     {
