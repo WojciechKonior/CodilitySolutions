@@ -18,9 +18,13 @@ string choose(tree **T)
         *T = nullptr;
         return x;
     }
-    else if(){
+    else if((*T)->l != nullptr){
+        string str = choose(&((*T)->l));
+        return x + str;
     }
-    else if(){
+    else if((*T)->r != nullptr){
+        string str = choose(&((*T)->r));
+        return x + str;
     }
     return "";
 }
