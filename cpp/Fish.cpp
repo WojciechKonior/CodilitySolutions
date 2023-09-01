@@ -1,25 +1,28 @@
-#include <deque>
+#include <stack>
 #include <vector>
 
 using namespace std;
 
 int solution(vector<int> &A, vector<int> &B) {
 
-    deque<int> up;
-    deque<int> down;
-    for(int i = 0; i<int(A.size()); i++)
-    {
-        if(B[i]==0) up.push_back(i);
-        else down.push_back(i);
+    stack<unsigned> fish;
 
-        if(!up.empty() && !down.empty()){
-            int P = down.back();
-            int Q = up.back();
-            if(P<Q){
-                if(A[P] > A[Q]) up.pop_back();
-                else down.pop_back();
+    for(unsigned Q = 0; Q<A.size(); Q++){
+        if(fish.empty()){
+            fish.push(Q);
+        }
+        else{
+            unsigned P = fish.top();
+            if(P < Q && B[P] == 1 && B[Q] == 0){
+                if(A[P]<A[Q]){
+                    fish.pop();
+                    Q--;
+                }
+            }
+            else{
+                fish.push(Q);
             }
         }
     }
-    return up.size() + down.size();
+    return fish.size();
 }
