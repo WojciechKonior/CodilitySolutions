@@ -1,13 +1,18 @@
 int solution(int A, int B, int K) {
-    if(K==1) return B-A;
-    int cnt = 0;
-    for(int i = A/K; i<=B; i++)
+    if(K==1)
     {
-        int n = i*K;
+        int diff = B-A+1;
+        return diff;
+    }
+
+    int cnt = 0;
+    int S = A/K;
+    for(long long i = S; i<=B; i++)
+    {
+        long long n = i*(long long)K;
         if(n<A) continue;
         if(n>B) break;
         cnt++;
-        
     }
     return cnt;
 }
